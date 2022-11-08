@@ -27627,7 +27627,7 @@ buttonResume.onclick = function () {
     divResultZone.style.display = "none";
     html5QrcodeScanner.resume();
 };
-var html5QrcodeScanner = new html5_qrcode_1.Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 }, supportedScanTypes: [html5_qrcode_1.Html5QrcodeScanType.SCAN_TYPE_CAMERA] }, 
+var html5QrcodeScanner = new html5_qrcode_1.Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 600, height: 500 }, supportedScanTypes: [html5_qrcode_1.Html5QrcodeScanType.SCAN_TYPE_CAMERA] }, 
 /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
@@ -27635,4 +27635,4 @@ html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
 /******/ })()
 ;
-//# sourceMappingURL=main.e931dcddb68cf8bdba5a.js.map
+//# sourceMappingURL=main.1cff39fdf349734dec36.js.map

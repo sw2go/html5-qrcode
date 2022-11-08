@@ -29,7 +29,7 @@ buttonResume.onclick = () => {
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader",
-  { fps: 10, qrbox: {width: 250, height: 250}, supportedScanTypes: [ Html5QrcodeScanType.SCAN_TYPE_CAMERA ] },
+  { fps: 10, qrbox: {width: 600, height: 500}, supportedScanTypes: [ Html5QrcodeScanType.SCAN_TYPE_CAMERA ] },
   /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
