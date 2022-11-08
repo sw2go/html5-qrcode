@@ -11,7 +11,14 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
 }
+
+.html5-qrcode-element {
+  font-size: xx-large;
+}
+
 
 .result-zone {
   align-items: center;
@@ -22,11 +29,8 @@ body {
   gap: 10px;
 }
 
-.resume-button {
-  margin-left: 10px;
-}
 
 
 
 
-/*# sourceMappingURL=main.1cff39fdf349734dec36.css.map*/
+/*# sourceMappingURL=main.7483a9cdfd9274e24955.css.map*/

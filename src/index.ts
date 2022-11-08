@@ -5,6 +5,9 @@ const divResultZone: HTMLDivElement = document.querySelector("#resultZone");
 const divScannedValue: HTMLDivElement = document.querySelector("#scannedValue");
 const buttonResume: HTMLButtonElement = document.querySelector("#resumeButton");
 
+
+let init = 0;
+
 function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
@@ -19,6 +22,14 @@ function onScanFailure(error) {
   // handle scan failure, usually better to ignore and keep scanning.
   // for example:
   //console.warn(`Code scan error = ${error}`);
+  if (!init) {
+    init++;
+    const buttonStop: HTMLButtonElement = document.querySelector("#html5-qrcode-button-camera-stop");
+    buttonStop.addEventListener("click", (ev: MouseEvent) => {
+      divResultZone.style.display = "none";
+    });
+
+  }
 }
 
 divResultZone.style.display = "none";
@@ -26,6 +37,10 @@ buttonResume.onclick = () => {
   divResultZone.style.display = "none";
   html5QrcodeScanner.resume();
 }
+
+
+
+
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
   "reader",
