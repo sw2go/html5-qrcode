@@ -27607,7 +27607,6 @@ __webpack_require__(/*! ./css/main.css */ "./src/css/main.css");
 var html5_qrcode_1 = __webpack_require__(/*! html5-qrcode */ "./node_modules/html5-qrcode/esm/index.js");
 var divResultZone = document.querySelector("#resultZone");
 var divScannedValue = document.querySelector("#scannedValue");
-var buttonResume = document.querySelector("#resumeButton");
 var init = 0;
 function onScanSuccess(decodedText, decodedResult) {
     // handle the scanned code as you like, for example:
@@ -27616,25 +27615,37 @@ function onScanSuccess(decodedText, decodedResult) {
     divScannedValue.innerText = "".concat(decodedText);
     divResultZone.style.display = "flex";
 }
-function onScanFailure(error) {
+function hideResult(ev) {
+    var _a;
     divResultZone.style.display = "none";
-    divScannedValue.innerText = "";
+    if (((_a = ev === null || ev === void 0 ? void 0 : ev.currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "resumeButton") {
+        html5QrcodeScanner.resume();
+        console.log("resume");
+    }
+    else if (ev === null) {
+        console.log("fail");
+    }
+    else {
+        console.log("stop");
+    }
+}
+function onScanFailure(error) {
+    if (divResultZone.style.display === "flex") {
+        divScannedValue.innerText = "";
+        hideResult(null);
+    }
     // handle scan failure, usually better to ignore and keep scanning.
     // for example:
     //console.warn(`Code scan error = ${error}`);
     if (!init) {
         init++;
         var buttonStop = document.querySelector("#html5-qrcode-button-camera-stop");
-        buttonStop.addEventListener("click", function (ev) {
-            divResultZone.style.display = "none";
-        });
+        buttonStop.addEventListener("click", hideResult);
+        var buttonResume = document.querySelector("#resumeButton");
+        buttonResume.addEventListener("click", hideResult);
     }
 }
 divResultZone.style.display = "none";
-buttonResume.onclick = function () {
-    divResultZone.style.display = "none";
-    html5QrcodeScanner.resume();
-};
 var html5QrcodeScanner = new html5_qrcode_1.Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 600, height: 500 }, supportedScanTypes: [html5_qrcode_1.Html5QrcodeScanType.SCAN_TYPE_CAMERA] }, 
 /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
@@ -27643,4 +27654,4 @@ html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
 /******/ })()
 ;
-//# sourceMappingURL=main.7483a9cdfd9274e24955.js.map
+//# sourceMappingURL=main.8c0cf4e0064aa01c422d.js.map
